@@ -4,7 +4,7 @@
   "description": "",
   "main": "server/server.js",
   "scripts": {
-    "server:dev": "nodemon server.js"
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -16,5 +16,11 @@
     "express": "^4.17.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4"
+  },
+  "devDependencies": {
+    "artillery": "^1.6.1",
+    "dotenv": "^8.2.0",
+    "mongodb": "^3.5.9",
+    "newrelic": "^6.11.0"
   }
 }
