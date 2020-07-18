@@ -15,6 +15,10 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 app.use(express.static(path.join(__dirname, '../dist')))
 
+app.get('/.txt',(req,res)=>{
+  res.send("")
+})
+
 app.get('/', (req, res) => {
   res.send('Working...')
 })
