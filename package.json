@@ -20,7 +20,9 @@
   "devDependencies": {
     "artillery": "^1.6.1",
     "dotenv": "^8.2.0",
+    "http-proxy-middleware": "^1.0.5",
     "mongodb": "^3.5.9",
-    "newrelic": "^6.11.0"
+    "newrelic": "^6.11.0",
+    "react": "^16.13.1"
   }
 }
