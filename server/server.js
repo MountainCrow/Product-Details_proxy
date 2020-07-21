@@ -15,22 +15,19 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 app.use(express.static(path.join(__dirname, '../dist')))
 
-app.use('/',createProxyMiddleware({
-  target:'http://ec2-54-67-54-160.us-west-1.compute.amazonaws.com/',
-  changeOrigin:true,
-},))
-app.use('/',createProxyMiddleware({
-  target:'http://ec2-54-183-54-127.us-west-1.compute.amazonaws.com/',
-  changeOrigin:true,
-},))
-app.use('/',createProxyMiddleware({
-  target:'http://',
-  changeOrigin:true,
-},))
+const productDetailsLB = createProxyMiddleware('http://ec2-54-183-193-8.us-west-1.compute.amazonaws.com');
+const reviewsLB = createProxyMiddleware('http://ec2-52-53-212-33.us-west-1.compute.amazonaws.com/');
+const productServiceLB = createProxyMiddleware('http://ec2-13-57-221-22.us-west-1.compute.amazonaws.com/');
 
-// app.get('/', (req, res) => {
-//   res.send('Working...')
-// })
+
+app.use(productDetailsLB)
+  .use(productServiceLB)
+  .use(reviewsLB)
+
+
+app.get('/', (req, res) => {
+  res.send('Working...')
+})
 
 const PORT = process.env.PORT || 3000;
 
